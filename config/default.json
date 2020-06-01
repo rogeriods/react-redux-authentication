@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb://localhost:27017/react-redux-auth",
+  "jwtSecret": "secret"
+}
