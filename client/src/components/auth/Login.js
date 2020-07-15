@@ -2,22 +2,21 @@ import React, { Fragment, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../actions/auth';
+import { login } from '../../redux/auth';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const { email, password } = formData;
 
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
     login(email, password);
   };
 
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
 
   return (
     <Fragment>
@@ -27,7 +26,14 @@ const Login = ({ login, isAuthenticated }) => {
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <input type="email" placeholder="Email address" name="email" value={email} onChange={onChange} required />
+          <input
+            type="email"
+            placeholder="Email address"
+            name="email"
+            value={email}
+            onChange={onChange}
+            required
+          />
         </div>
         <div className="form-group">
           <input

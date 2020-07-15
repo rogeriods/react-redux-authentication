@@ -1,28 +1,29 @@
 import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
+import { setAlert } from '../../redux/alert';
+import { register } from '../../redux/auth';
 import PropTypes from 'prop-types';
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', password: '', password2: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: ''
+  });
   const { name, email, password, password2 } = formData;
 
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
-    } else {
-      register({ name, email, password });
-    }
+    if (password !== password2) setAlert('Passwords do not match', 'danger');
+    else register({ name, email, password });
   };
 
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard" />;
-  }
+  if (isAuthenticated) return <Redirect to="/dashboard" />;
 
   return (
     <Fragment>
@@ -32,13 +33,31 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
       </p>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <input type="text" placeholder="Name" name="name" value={name} onChange={onChange} />
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            value={name}
+            onChange={onChange}
+          />
         </div>
         <div className="form-group">
-          <input type="email" placeholder="Email Address" name="email" value={email} onChange={onChange} />
+          <input
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            value={email}
+            onChange={onChange}
+          />
         </div>
         <div className="form-group">
-          <input type="password" placeholder="Password" name="password" value={password} onChange={onChange} />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            value={password}
+            onChange={onChange}
+          />
         </div>
         <div className="form-group">
           <input

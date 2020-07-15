@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { loadUser } from './actions/auth';
+import { loadUser } from './redux/auth';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import Navbar from './components/layout/Navbar';

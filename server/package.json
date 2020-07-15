@@ -1,25 +1,20 @@
 {
-  "name": "react-redux-authentication",
+  "name": "authentication-api",
   "version": "1.0.0",
-  "description": "React/Redux Login Authentication",
+  "description": "React/Redux Login Authentication API",
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "server": "nodemon index",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "nodemon index"
   },
   "keywords": [
     "mongo",
     "node",
-    "react",
-    "redux",
     "jwt"
   ],
   "author": "Rogério Domingos",
   "license": "MIT",
   "devDependencies": {
-    "concurrently": "^5.2.0",
     "nodemon": "^2.0.4"
   },
   "dependencies": {

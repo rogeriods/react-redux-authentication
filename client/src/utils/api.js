@@ -1,6 +1,6 @@
 import axios from 'axios';
 import store from '../store';
-import { LOGOUT, CLEAR_DASHBOARD } from '../actions/types';
+import { LOGOUT, CLEAR_DASHBOARD } from '../redux/types';
 
 const api = axios.create({
   baseURL: 'http://localhost:5000/api',
